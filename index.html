@@ -30,23 +30,46 @@
     <style>
       body {
         font-family: 'Public Sans', sans-serif;
+      }
+      /* Dark mode styles */
+      html.dark body {
         background-color: #101922;
         color: white;
       }
-      /* Custom scrollbar for better aesthetics */
-      ::-webkit-scrollbar {
+      /* Light mode styles */
+      html.light body {
+        background-color: #f6f7f8;
+        color: #1e293b;
+      }
+      /* Custom scrollbar for dark mode */
+      html.dark ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
       }
-      ::-webkit-scrollbar-track {
+      html.dark ::-webkit-scrollbar-track {
         background: #101922; 
       }
-      ::-webkit-scrollbar-thumb {
+      html.dark ::-webkit-scrollbar-thumb {
         background: #283039; 
         border-radius: 4px;
       }
-      ::-webkit-scrollbar-thumb:hover {
+      html.dark ::-webkit-scrollbar-thumb:hover {
         background: #374151; 
+      }
+      /* Custom scrollbar for light mode */
+      html.light ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      html.light ::-webkit-scrollbar-track {
+        background: #f6f7f8; 
+      }
+      html.light ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      html.light ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
       }
     </style>
   <script type="importmap">

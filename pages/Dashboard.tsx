@@ -19,6 +19,7 @@ import {
   PieChart,
   Pie
 } from 'recharts';
+import { useTheme } from '../contexts/ThemeContext';
 
 const dataMonthly = [
   { name: 'JAN', value: 2.1 },
@@ -46,18 +47,26 @@ const dataRegional = [
 
 export const Dashboard: React.FC = () => {
   const [viewMode, setViewMode] = useState<'monthly' | 'yearly'>('monthly');
+  const { theme } = useTheme();
 
   const chartData = viewMode === 'monthly' ? dataMonthly : dataYearly;
+
   return (
-    <div className="flex flex-col h-full overflow-y-auto bg-background-dark">
+    <div className={`flex flex-col h-full overflow-y-auto ${theme === 'dark' ? 'bg-background-dark' : 'bg-background-light'
+      }`}>
       {/* Header */}
-      <header className="sticky top-0 z-10 flex items-center justify-between bg-background-dark/95 backdrop-blur-md border-b border-slate-800 px-8 py-4">
+      <header className={`sticky top-0 z-10 flex items-center justify-between backdrop-blur-md border-b px-8 py-4 ${theme === 'dark'
+          ? 'bg-background-dark/95 border-slate-800'
+          : 'bg-background-light/95 border-slate-200'
+        }`}>
         <div className="flex flex-col">
-          <h2 className="text-white text-xl font-bold tracking-tight">Painel Executivo Estratégico</h2>
-          <p className="text-xs text-slate-400">Dados consolidados do conselho regional</p>
+          <h2 className={`text-xl font-bold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+            }`}>Painel Executivo Estratégico</h2>
+          <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Dados consolidados do conselho regional</p>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex bg-[#283039] rounded-lg p-1">
+          <div className={`flex rounded-lg p-1 ${theme === 'dark' ? 'bg-[#283039]' : 'bg-slate-200'
+            }`}>
             <button
               onClick={() => setViewMode('monthly')}
               className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-all ${viewMode === 'monthly'
